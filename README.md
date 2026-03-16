@@ -27,7 +27,7 @@ This project is a **deep learning-based** application that detects a person's **
    ```  
 3. **Run the Streamlit app**  
    ```bash
-   streamlit run app.py
+   streamlit run streamlit_app/app.py
    ```  
 
 ## 📌 Model & Optimization  
