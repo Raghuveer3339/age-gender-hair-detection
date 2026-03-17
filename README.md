@@ -1,50 +1,120 @@
 # Age and Gender Detection with Deep Learning  
 
 ## 📌 Project Overview  
-This project is a **deep learning-based** application that detects a person's **age and gender** from images using a **Convolutional Neural Network (CNN)**. It includes **data preprocessing, model training, evaluation, and a user-friendly UI built with Streamlit**.  
+This project is a **deep learning-based application** that detects a person's **age and gender** from images using a **Convolutional Neural Network (CNN)**. It includes **data preprocessing, model training, evaluation, and a user-friendly UI built with Streamlit**.  
+
+---
 
 ## 🚀 Features  
-- **Pretrained CNN model** for accurate predictions  
-- **Image preprocessing** for better input quality  
-- **Streamlit UI** for an interactive experience  
-- **Visualization** of training and validation performance
-- ## 👴 Senior Citizen Detection
+- Pretrained CNN model for accurate predictions  
+- Image preprocessing for better input quality  
+- Streamlit UI for an interactive experience  
+- Visualization of training and validation performance  
 
-This project also includes a real-time senior citizen detection system using a webcam.
+---
 
-- Detects age and gender in real-time
-- Marks individuals as **Senior Citizen** if age > 60
-- Stores results in a CSV file with timestamp
-- Uses OpenCV for webcam capture
+## 👴 Senior Citizen Detection (Webcam)  
 
-📁 Output file: `senior_detection_results.csv` 
+This module performs **real-time detection** using a webcam.
+
+- Detects age and gender in real-time  
+- Marks individuals as **Senior Citizen** if age > 60  
+- Stores results in a CSV file with timestamp  
+- Uses OpenCV for webcam capture  
+
+📁 Output file:  
+
+streamlit_app/senior_detection_results.csv
+
+
+---
+
+## 🎤 Voice Age & Emotion Detection  
+
+This module detects a person's **age, gender, and emotion from voice input** using audio feature extraction.
+
+### 🔍 Features  
+- Upload `.wav` or `.mp3` audio file  
+- Detects **gender (only male allowed)**  
+- Predicts **age from voice features**  
+- Identifies **Senior Citizens (age > 60)**  
+- Detects **emotion (Happy, Sad, Neutral, Angry)**  
+- Stores results in CSV file with timestamp  
+
+📁 Output file:  
+
+streamlit_app/voice_detection_results.csv
+
+
+---
+
+### 📸 Voice Detection Results  
+
+![Result 1](plots/voice%20result-1.png)  
+![Result 2](plots/voice%20result-2.png)  
+![Result 3](plots/voice%20result-3.png)  
+![Result 4](plots/voice%20result-4.png)  
+
+---
 
 ## 📂 Project Structure  
-- `Age_Sex_Detection.h5/` → Trained deep learning model  
-- `app.py` → Streamlit UI for user interaction  
-- `age_gender_identification.ipynb` → Model training and evaluation script  
-- `requirements.txt` → List of dependencies  
+
+
+age-gender-hair-detection/
+│
+├── dataset/
+├── hair_dataset/
+├── models/
+├── notebook/
+├── plots/
+│ ├── voice result-1.png
+│ ├── voice result-2.png
+│ ├── voice result-3.png
+│ ├── voice result-4.png
+│
+├── streamlit_app/
+│ ├── app.py
+│ ├── senior_detection.py
+│ ├── voice_detection.py
+│ ├── senior_detection_results.csv
+│ ├── voice_detection_results.csv
+│
+├── README.md
+├── requirements.txt
+
+
+---
 
 ## 🛠 Installation & Usage  
+
 1. **Clone the repository**  
-   ```bash
-   git clone https://github.com/Raghuveer3339/age-gender-hair-detection.git
-   cd AGE_GENDER_DETECTION
-   ```  
-2. **Install dependencies**  
-   ```bash
-   pip install -r requirements.txt
-   ```  
-3. **Run the Streamlit app**  
-   ```bash
-   streamlit run streamlit_app/app.py
-   ```  
+```bash
+git clone https://github.com/Raghuveer3339/age-gender-hair-detection.git
+cd age-gender-hair-detection
 
-## 📌 Model & Optimization  
-This is a **basic model**, and there’s room for **optimization**. You can:  
-- Improve **CNN architecture** for better accuracy  
-- Use **data augmentation** to enhance dataset quality  
-- Fine-tune with **transfer learning**  
+Install dependencies
 
-## 🤝 Contributions  
-Feel free to **fork**, **improve**, and **contribute**!  
+pip install -r requirements.txt
+
+Run Image Detection App
+
+streamlit run streamlit_app/app.py
+
+Run Voice Detection App
+
+python -m streamlit run streamlit_app/voice_detection.py
+📌 Model & Optimization
+
+This is a basic model, and there is scope for improvement:
+
+Improve CNN architecture for better accuracy
+
+Use data augmentation to enhance dataset quality
+
+Apply transfer learning for better performance
+
+Replace dummy logic in voice detection with real ML models
+
+🤝 Contributions
+
+Feel free to fork, improve, and contribute!
