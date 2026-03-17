@@ -47,16 +47,6 @@ streamlit_app/voice_detection_results.csv
 
 
 ---
-
-### 📸 Voice Detection Results  
-
-![Result 1](plots/voice%20result-1.png)  
-![Result 2](plots/voice%20result-2.png)  
-![Result 3](plots/voice%20result-3.png)  
-![Result 4](plots/voice%20result-4.png)  
-
----
-
 ## 📂 Project Structure  
 
 
