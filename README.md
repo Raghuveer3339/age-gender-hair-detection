@@ -18,7 +18,7 @@ This project is a **deep learning-based** application that detects a person's **
 ## 🛠 Installation & Usage  
 1. **Clone the repository**  
    ```bash
-   git clone https://github.com/aslin72/AGE_GENDER_DETECTION.git
+   git clone https://github.com/Raghuveer3339/age-gender-hair-detection.git
    cd AGE_GENDER_DETECTION
    ```  
 2. **Install dependencies**  
@@ -27,7 +27,7 @@ This project is a **deep learning-based** application that detects a person's **
    ```  
 3. **Run the Streamlit app**  
    ```bash
-   streamlit run app.py
+   streamlit run streamlit_app/app.py
    ```  
 
 ## 📌 Model & Optimization  
