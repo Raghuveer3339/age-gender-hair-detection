@@ -7,7 +7,17 @@ This project is a **deep learning-based** application that detects a person's **
 - **Pretrained CNN model** for accurate predictions  
 - **Image preprocessing** for better input quality  
 - **Streamlit UI** for an interactive experience  
-- **Visualization** of training and validation performance  
+- **Visualization** of training and validation performance
+- ## 👴 Senior Citizen Detection
+
+This project also includes a real-time senior citizen detection system using a webcam.
+
+- Detects age and gender in real-time
+- Marks individuals as **Senior Citizen** if age > 60
+- Stores results in a CSV file with timestamp
+- Uses OpenCV for webcam capture
+
+📁 Output file: `senior_detection_results.csv` 
 
 ## 📂 Project Structure  
 - `Age_Sex_Detection.h5/` → Trained deep learning model  
