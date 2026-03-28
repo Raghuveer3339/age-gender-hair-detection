@@ -5,6 +5,20 @@ import cv2
 import os
 import tensorflow as tf
 from keras.models import load_model
+import joblib
+
+st.header("💇 Long Hair Gender Detection")
+
+hair_model = joblib.load("hair_model.pkl")
+
+age_input = st.slider("Select Age", 1, 100, 25)
+hair = st.selectbox("Hair Length", ["Short", "Long"])
+
+hair_value = 1 if hair == "Long" else 0
+
+if st.button("Predict Gender (Hair Logic)"):
+    prediction = hair_model.predict([[age_input, hair_value]])[0]
+    st.success(f"Predicted Gender: {prediction}")
 
 # Set page configuration
 st.set_page_config(

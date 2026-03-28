@@ -4,8 +4,12 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 import os
+import joblib
 
-st.title("🎤 Voice Age & Emotion Detection")
+st.title("🎤 Voice Age & Emotion Detection (ML Powered)")
+
+# ===================== LOAD MODEL =====================
+model = joblib.load("voice_model.pkl")
 
 # Upload audio
 audio_file = st.file_uploader("Upload Voice", type=["wav", "mp3"])
@@ -13,14 +17,13 @@ audio_file = st.file_uploader("Upload Voice", type=["wav", "mp3"])
 
 # ===================== FEATURE EXTRACTION =====================
 def extract_features(file):
-    y, sr = librosa.load(file, sr=None)
-    mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13)
+    y, sr = librosa.load(file, sr=None, duration=3)
+    mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=20)
     return np.mean(mfcc.T, axis=0)
 
 
-# ===================== PREDICTION FUNCTIONS =====================
+# ===================== BASIC LOGIC =====================
 def predict_gender(features):
-    # Dummy logic
     if np.mean(features) > -20:
         return "Male"
     else:
@@ -30,21 +33,18 @@ def predict_gender(features):
 def predict_age(features):
     mean_val = np.mean(features)
 
-    if mean_val > -20:
-        return np.random.randint(45, 75)  # older voices
+    if mean_val > -15:
+        return 65
+    elif mean_val > -25:
+        return 50
     else:
-        return np.random.randint(20, 45)  # younger voices
+        return 30
 
 
-def predict_emotion(features):
-    emotions = ["Happy", "Sad", "Neutral", "Angry"]
-    return np.random.choice(emotions)
-
-
-# ===================== MAIN LOGIC =====================
+# ===================== MAIN =====================
 if audio_file is not None:
 
-    st.write("Processing audio...")
+    st.write("🔄 Processing audio...")
 
     features = extract_features(audio_file)
 
@@ -57,15 +57,17 @@ if audio_file is not None:
         age = predict_age(features)
 
         st.success(f"Gender: {gender}")
-        st.info(f"Age: {age}")
+        st.info(f"Estimated Age: {age}")
 
+        # ===================== ML PREDICTION =====================
         if age > 60:
-            emotion = predict_emotion(features)
-            st.warning("Senior Citizen Detected")
-            st.success(f"Emotion: {emotion}")
+            emotion = model.predict([features])[0]
+
+            st.warning("👴 Senior Citizen Detected")
+            st.success(f"Predicted Emotion: {emotion}")
         else:
             emotion = "N/A"
-            st.info("Emotion detection not required")
+            st.info("Emotion detection not required (Age ≤ 60)")
 
         # ===================== SAVE DATA =====================
         os.makedirs("streamlit_app", exist_ok=True)
@@ -81,9 +83,9 @@ if audio_file is not None:
 
         file_path = "streamlit_app/voice_detection_results.csv"
 
-        st.write("Saving to:", file_path)  # debug
-
         if os.path.exists(file_path):
             df.to_csv(file_path, mode='a', header=False, index=False)
         else:
             df.to_csv(file_path, index=False)
+
+        st.success("✅ Data saved successfully!")
