@@ -1,147 +1,151 @@
-# 🧠 Age, Gender, Voice & Sign Language Detection System
+# 🚀 Sign Language Detection & Hair-Based Gender Prediction (ML Project)
 
-## 📌 Project Overview  
-This project is a **multi-modal AI-based system** that performs detection using **image, voice, and hand gestures**. It combines **computer vision, audio processing, and machine learning concepts** into a single interactive application built using **Streamlit**.
+## 📌 Project Overview
 
-The system includes:
-- Age & Gender Detection from images  
-- Senior Citizen Detection (real-time webcam)  
-- Voice-based Age & Emotion Detection  
-- Sign Language Detection using hand gestures  
+This project is a **Machine Learning-based Multi-Feature System** developed using Python and Streamlit.
+It focuses on **real-time sign language detection** along with an additional **hair-based gender prediction module**.
 
----
+The system supports both:
 
-## 🚀 Features  
-
-### 👤 Age & Gender Detection
-- Detects age and gender from facial images  
-- Uses a **pretrained CNN model**  
-- Includes image preprocessing for better results  
+* 📷 **Real-time webcam detection**
+* 🖼️ **Image upload detection**
 
 ---
 
-### 👴 Senior Citizen Detection
-- Real-time detection using webcam  
-- Marks individuals as **Senior Citizen (age > 60)**  
-- Stores results with timestamp  
+## 🎯 Features
 
-📁 Output file: `streamlit_app/senior_detection_results.csv`
+### ✋ 1. Sign Language Detection (Main Task)
 
----
+* Uses **MediaPipe Hands** for hand tracking
+* Extracts **hand landmark features (x, y coordinates)**
+* Uses a **Machine Learning model (Decision Tree)** for prediction
+* Recognizes gestures:
 
-### 🎤 Voice Age & Emotion Detection
-- Accepts audio input (`.wav`, `.mp3`)  
-- Extracts features using **MFCC (librosa)**  
-- Detects:
-  - Gender (male only allowed)
-  - Age (estimated)
-  - Emotion (for senior citizens)
+  * Hello 👋
+  * Yes 👍
+  * No ❌
+  * Thanks 🙏
 
-📁 Output file: `streamlit_app/voice_detection_results.csv`
+#### ✅ Functionalities:
 
----
-
-### ✋ Sign Language Detection
-- Detects hand gestures using **MediaPipe (ML-based framework)**  
-- Supports:
-  - Image upload detection  
-  - Real-time webcam detection  
-
-- Uses hand landmark extraction  
-- Applies rule-based logic to classify gestures:
-  - Hello 👋  
-  - Yes 👍  
-  - No ❌  
-  - Thanks 🙏  
-
-📁 Output file: `streamlit_app/sign_detection_results.csv`
+* Real-time webcam detection
+* Image upload detection
+* Displays prediction on screen
 
 ---
 
-## 🧠 Machine Learning Concepts Used  
+### ⏰ 2. Time Restriction
 
-- Convolutional Neural Networks (CNN)  
-- Feature extraction (MFCC for audio)  
-- Hand landmark detection using MediaPipe  
-- Rule-based classification  
-- Data logging using CSV  
+* The system only works between:
 
----
-
-## 🖥️ Tech Stack  
-
-- Python  
-- Streamlit  
-- OpenCV  
-- NumPy, Pandas  
-- Librosa  
-- MediaPipe  
+  * **6 PM to 10 PM**
+* Ensures controlled execution as per task requirement
 
 ---
 
-## 📂 Project Structure  
+### 💇 3. Hair-Based Gender Detection (Bonus Feature)
 
+* Uses a **Decision Tree ML model**
+* Inputs:
 
-AGE_GENDER_CODE/
-│
-├── dataset/
-├── hair_dataset/
-├── models/
-├── notebook/
-├── plots/ # Screenshots
+  * Age
+  * Hair Length (Short / Long)
+* Predicts:
+
+  * Gender
+
+---
+
+## 🧠 Technologies Used
+
+* Python 🐍
+* Streamlit (GUI)
+* OpenCV (Computer Vision)
+* MediaPipe (Hand Tracking)
+* Scikit-learn (ML Models)
+* NumPy
+
+---
+
+## 📂 Project Structure
+
+```
+age-gender-hair-detection/
 │
 ├── streamlit_app/
-│ ├── app.py
-│ ├── senior_detection.py
-│ ├── voice_detection.py
-│ ├── sign_language.py
-│ ├── senior_detection_results.csv
-│ ├── voice_detection_results.csv
-│ ├── sign_detection_results.csv
+│   ├── app.py
+│   ├── sign_model.pkl
+│   ├── hair_model.pkl
 │
-├── requirements.txt
 ├── README.md
-
+├── requirements.txt
+```
 
 ---
 
-## 🛠 Installation & Usage  
+## ▶️ How to Run the Project
 
-### 1️⃣ Clone the repository
-```bash
+### 1️⃣ Clone Repository
+
+```
 git clone https://github.com/Raghuveer3339/age-gender-hair-detection.git
-cd AGE_GENDER_CODE
-2️⃣ Install dependencies
+cd age-gender-hair-detection/streamlit_app
+```
+
+---
+
+### 2️⃣ Install Dependencies
+
+```
 pip install -r requirements.txt
-3️⃣ Run applications
-▶ Age & Gender Detection
-streamlit run streamlit_app/app.py
-▶ Voice Detection
-streamlit run streamlit_app/voice_detection.py
-▶ Sign Language Detection
-streamlit run streamlit_app/sign_language.py
-📊 Results
+```
 
-Outputs are stored in CSV files
+---
 
-Screenshots are stored in the plots/ folder
+### 3️⃣ Run the Application
 
-Real-time predictions are shown in Streamlit UI
+```
+python -m streamlit run app.py
+```
 
-📌 Future Improvements
+---
 
-Train a custom deep learning model for gesture recognition
+## 📊 Output
 
-Improve accuracy using larger datasets
+* Real-time sign detection using webcam
+* Image-based sign detection
+* Hair-based gender prediction
+* Interactive GUI using Streamlit
 
-Add advanced classifiers (SVM, CNN, etc.)
+---
 
-Enhance real-time performance
+## 🎓 Key Highlights
 
-🤝 Contributions
+* Real-time computer vision system
+* Integration of **MediaPipe + Machine Learning**
+* Multi-input system (Webcam + Image Upload)
+* User-friendly UI using Streamlit
+* Follows task constraints (time restriction)
 
-Feel free to fork, improve, and contribute to this project.
+---
 
-📬 Conclusion
+## 📌 Future Improvements
 
-This project demonstrates the integration of computer vision, audio processing, and interactive UI, providing a strong foundation for real-world AI applications.
+* Add more gesture classes
+* Improve model accuracy with larger dataset
+* Deploy application online (Streamlit Cloud)
+* Add voice feedback system
+
+---
+
+## 👨‍💻 Author
+
+**Raghuveer Singh**
+
+---
+
+## ⭐ Acknowledgement
+
+This project was developed as part of an **AI/ML Internship**, focusing on real-world implementation of machine learning and computer vision concepts.
+
+---
